@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -7,12 +8,17 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Not a good method, done only for educational purposes
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+|--------------------------------------------------------------------------
+| Read
+|--------------------------------------------------------------------------
+*/
+Route::get('/read', function () {
+    return json_encode(DB::select("SELECT * FROM users ORDER BY id ASC"));
 });
+
+
